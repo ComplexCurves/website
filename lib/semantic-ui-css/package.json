@@ -9,7 +9,7 @@
         "spec": ">=2.1.8 <3.0.0",
         "type": "range"
       },
-      "/home/kranich/sync/Projekte/ComplexCurves"
+      "/home/travis/build/kranich/ComplexCurves"
     ]
   ],
   "_from": "semantic-ui-css@>=2.1.8 <3.0.0",
@@ -39,7 +39,7 @@
   "_shasum": "7c88cb26488224be9d3ebda5aa13d587d72832f2",
   "_shrinkwrap": null,
   "_spec": "semantic-ui-css@^2.1.8",
-  "_where": "/home/kranich/sync/Projekte/ComplexCurves",
+  "_where": "/home/travis/build/kranich/ComplexCurves",
   "author": {
     "email": "jack@semantic-ui.com",
     "name": "Jack Lukic"

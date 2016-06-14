@@ -9,7 +9,7 @@
         "spec": ">=3.0.0 <4.0.0",
         "type": "range"
       },
-      "/home/kranich/sync/Projekte/ComplexCurves"
+      "/home/travis/build/kranich/ComplexCurves"
     ]
   ],
   "_from": "jquery@>=3.0.0 <4.0.0",
@@ -44,7 +44,7 @@
   "_shasum": "95a2a9541291a9f819e016f85ba247116d03e4ab",
   "_shrinkwrap": null,
   "_spec": "jquery@^3.0.0",
-  "_where": "/home/kranich/sync/Projekte/ComplexCurves",
+  "_where": "/home/travis/build/kranich/ComplexCurves",
   "author": {
     "name": "jQuery Foundation and other contributors",
     "url": "https://github.com/jquery/jquery/blob/3.0.0/AUTHORS.txt"
