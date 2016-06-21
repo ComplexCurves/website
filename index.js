@@ -10,13 +10,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function customExample(equation) {
-        return {
+        return PolynomialParser.parse(equation) ? {
             "id": "Custom",
             "cached": false,
             "title": equation,
             "equation": equation,
             "description": "Custom equation"
-        };
+        } : null;
     }
 
     function updateHash() {
@@ -47,6 +47,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function selectExample(example) {
+        example = example || customExample($('.ui.search').search('get value'));
+        if (!example)
+            return;
         if (canvas.complexCurves)
             canvas.complexCurves.unregisterEventHandlers();
         var piOver180 = Math.PI / 180;
@@ -59,9 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     lat, lon);
         } else {
             canvas.complexCurves = ComplexCurves.fromEquation(canvas,
-                example.equation ||
-                $('.ui.search').search('get value'),
-                example.depth || 12, lat, lon);
+                example.equation, example.depth || 12, lat, lon);
         }
         if (example.zoom !== undefined)
             canvas.complexCurves.setZoom(example.zoom);
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         currentExample = example ||
             customExample($('.ui.search').search('get value'));
         $('.ui.search').search('set value', currentExample.id === 'Custom' ?
-            currentExample.equation : currentExample.id);
+            currentExample.equation : currentExample.title);
         makeSearchClearable(false);
         updateHash();
     }
@@ -254,9 +255,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     var
                         html = '';
                     var value = $('.ui.search').search('get value');
-                    if (PolynomialParser.parse(value)) {
+                    var example = customExample(value);
+                    if (example) {
                         html = $('.ui.search').search('generate results', {
-                            "results": [customExample(value)]
+                            "results": [example]
                         });
                         $('.ui.search').search('add results', html);
                         return;
@@ -328,6 +330,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         $('.ui.search').search('search local', '');
         $('.ui.search').search('show results');
+
+        $('#searchInput').on('keyup', function(e) {
+            if(e.key === "Enter" || e.code === "Enter" || e.keyCode === 13) {
+                var results = $('.ui.search').search('get results');
+                var result = results[0] ||
+                    customExample($('.ui.search').search('get value'));
+                if (result)
+                    selectExample(result);
+                return false;
+            }
+        });
 
         updateState();
     };
