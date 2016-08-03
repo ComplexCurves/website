@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "semantic-ui-css@^2.1.8",
+        "raw": "semantic-ui-css@^2.2.2",
         "scope": null,
         "escapedName": "semantic-ui-css",
         "name": "semantic-ui-css",
-        "rawSpec": "^2.1.8",
-        "spec": ">=2.1.8 <3.0.0",
+        "rawSpec": "^2.2.2",
+        "spec": ">=2.2.2 <3.0.0",
         "type": "range"
       },
       "/home/travis/build/kranich/ComplexCurves"
     ]
   ],
-  "_from": "semantic-ui-css@>=2.1.8 <3.0.0",
+  "_from": "semantic-ui-css@>=2.2.2 <3.0.0",
   "_id": "semantic-ui-css@2.2.2",
   "_inCache": true,
   "_installable": true,
@@ -30,12 +30,12 @@
   "_npmVersion": "3.10.5",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "semantic-ui-css@^2.1.8",
+    "raw": "semantic-ui-css@^2.2.2",
     "scope": null,
     "escapedName": "semantic-ui-css",
     "name": "semantic-ui-css",
-    "rawSpec": "^2.1.8",
-    "spec": ">=2.1.8 <3.0.0",
+    "rawSpec": "^2.2.2",
+    "spec": ">=2.2.2 <3.0.0",
     "type": "range"
   },
   "_requiredBy": [
@@ -44,7 +44,7 @@
   "_resolved": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.2.tgz",
   "_shasum": "44297074944adea4ce18386076fd2a6101157307",
   "_shrinkwrap": null,
-  "_spec": "semantic-ui-css@^2.1.8",
+  "_spec": "semantic-ui-css@^2.2.2",
   "_where": "/home/travis/build/kranich/ComplexCurves",
   "author": {
     "name": "Jack Lukic",
