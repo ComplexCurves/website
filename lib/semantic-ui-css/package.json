@@ -2,49 +2,49 @@
   "_args": [
     [
       {
-        "raw": "semantic-ui-css@^2.2.2",
+        "raw": "semantic-ui-css@^2.2.3",
         "scope": null,
         "escapedName": "semantic-ui-css",
         "name": "semantic-ui-css",
-        "rawSpec": "^2.2.2",
-        "spec": ">=2.2.2 <3.0.0",
+        "rawSpec": "^2.2.3",
+        "spec": ">=2.2.3 <3.0.0",
         "type": "range"
       },
       "/home/travis/build/kranich/ComplexCurves"
     ]
   ],
-  "_from": "semantic-ui-css@>=2.2.2 <3.0.0",
-  "_id": "semantic-ui-css@2.2.2",
+  "_from": "semantic-ui-css@>=2.2.3 <3.0.0",
+  "_id": "semantic-ui-css@2.2.3",
   "_inCache": true,
   "_installable": true,
   "_location": "/semantic-ui-css",
-  "_nodeVersion": "5.10.1",
+  "_nodeVersion": "6.3.0",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/semantic-ui-css-2.2.2.tgz_1468428808297_0.026089947437867522"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/semantic-ui-css-2.2.3.tgz_1471837264394_0.6260280590504408"
   },
   "_npmUser": {
     "name": "semantic-bot",
     "email": "bot@semantic-ui.com"
   },
-  "_npmVersion": "3.10.5",
+  "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "semantic-ui-css@^2.2.2",
+    "raw": "semantic-ui-css@^2.2.3",
     "scope": null,
     "escapedName": "semantic-ui-css",
     "name": "semantic-ui-css",
-    "rawSpec": "^2.2.2",
-    "spec": ">=2.2.2 <3.0.0",
+    "rawSpec": "^2.2.3",
+    "spec": ">=2.2.3 <3.0.0",
     "type": "range"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.2.tgz",
-  "_shasum": "44297074944adea4ce18386076fd2a6101157307",
+  "_resolved": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.3.tgz",
+  "_shasum": "27ed57043522e88e8e3ea6370f7726343126ac98",
   "_shrinkwrap": null,
-  "_spec": "semantic-ui-css@^2.2.2",
+  "_spec": "semantic-ui-css@^2.2.3",
   "_where": "/home/travis/build/kranich/ComplexCurves",
   "author": {
     "name": "Jack Lukic",
@@ -60,10 +60,10 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "44297074944adea4ce18386076fd2a6101157307",
-    "tarball": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.2.tgz"
+    "shasum": "27ed57043522e88e8e3ea6370f7726343126ac98",
+    "tarball": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.3.tgz"
   },
-  "gitHead": "25ce5aa186c4bf5e8d9cb1017ee3aea9afa3d2c2",
+  "gitHead": "67f91900c54d479db61c162567821d2e984752f9",
   "homepage": "http://www.semantic-ui.com",
   "license": "MIT",
   "maintainers": [
@@ -81,5 +81,5 @@
   },
   "scripts": {},
   "title": "Semantic UI",
-  "version": "2.2.2"
+  "version": "2.2.3"
 }
