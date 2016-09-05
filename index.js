@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", function() {
         if (example.cached) {
             canvas.complexCurves =
                 ComplexCurves.fromFile(canvas,
-                    'models/' + example.id + '.bin', example.equation,
-                    lat, lon);
+                    'http://complexcurves.org/models/' + example.id + '.bin',
+                    example.equation, lat, lon);
         } else {
             canvas.complexCurves = ComplexCurves.fromEquation(canvas,
                 example.equation, example.depth || 12, lat, lon);
