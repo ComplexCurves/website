@@ -14,19 +14,19 @@
     ]
   ],
   "_from": "semantic-ui-css@>=2.2.3 <3.0.0",
-  "_id": "semantic-ui-css@2.2.4",
+  "_id": "semantic-ui-css@2.2.9",
   "_inCache": true,
   "_location": "/semantic-ui-css",
-  "_nodeVersion": "5.7.0",
+  "_nodeVersion": "7.5.0",
   "_npmOperationalInternal": {
     "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/semantic-ui-css-2.2.4.tgz_1472444115826_0.24543065414763987"
+    "tmp": "tmp/semantic-ui-css-2.2.9.tgz_1487706022157_0.27086117025464773"
   },
   "_npmUser": {
     "name": "semantic-bot",
     "email": "bot@semantic-ui.com"
   },
-  "_npmVersion": "3.7.5",
+  "_npmVersion": "4.2.0",
   "_phantomChildren": {},
   "_requested": {
     "raw": "semantic-ui-css@^2.2.3",
@@ -40,8 +40,8 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.4.tgz",
-  "_shasum": "e886e6e55e2a16874bd5de49c25f26cd2eb720b7",
+  "_resolved": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.9.tgz",
+  "_shasum": "4098c755a0a8e2c7b3fa3c32a4bec47606825ada",
   "_shrinkwrap": null,
   "_spec": "semantic-ui-css@^2.2.3",
   "_where": "/home/travis/build/kranich/ComplexCurves",
@@ -59,12 +59,13 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "e886e6e55e2a16874bd5de49c25f26cd2eb720b7",
-    "tarball": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.4.tgz"
+    "shasum": "4098c755a0a8e2c7b3fa3c32a4bec47606825ada",
+    "tarball": "https://registry.npmjs.org/semantic-ui-css/-/semantic-ui-css-2.2.9.tgz"
   },
-  "gitHead": "67f91900c54d479db61c162567821d2e984752f9",
+  "gitHead": "7ad02f2fb9e50087fcb02bc1fba05e900488381c",
   "homepage": "http://www.semantic-ui.com",
   "license": "MIT",
+  "main": "semantic.js",
   "maintainers": [
     {
       "name": "semantic-bot",
@@ -80,5 +81,5 @@
   },
   "scripts": {},
   "title": "Semantic UI",
-  "version": "2.2.4"
+  "version": "2.2.9"
 }
