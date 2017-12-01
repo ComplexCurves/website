@@ -2,7 +2,7 @@
   "_args": [
     [
       "jquery@3.2.1",
-      "/home/travis/build/kranich/ComplexCurves"
+      "/home/travis/build/ComplexCurves/ComplexCurves"
     ]
   ],
   "_from": "jquery@3.2.1",
@@ -27,7 +27,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/jquery/-/jquery-3.2.1.tgz",
   "_spec": "3.2.1",
-  "_where": "/home/travis/build/kranich/ComplexCurves",
+  "_where": "/home/travis/build/ComplexCurves/ComplexCurves",
   "author": {
     "name": "JS Foundation and other contributors",
     "url": "https://github.com/jquery/jquery/blob/3.2.1/AUTHORS.txt"
