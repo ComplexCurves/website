@@ -1,0 +1,29 @@
+{
+  "name": "complexcurves-website",
+  "version": "0.1.0",
+  "description": "A website for visualization of complex plane algebraic curves",
+  "dependencies": {
+    "semantic-ui-css": "^2.2.0"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "prepare": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ComplexCurves/website.git"
+  },
+  "author": "Stefan Kranich <kranich@ma.tum.de>",
+  "license": "Apache-2.0",
+  "files": [
+    "README.md"
+  ],
+  "bugs": {
+    "url": "https://github.com/ComplexCurves/website/issues"
+  },
+  "homepage": "https://github.com/ComplexCurves/website#readme"
+}
