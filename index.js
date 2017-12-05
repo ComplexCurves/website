@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 encodeURIComponent(currentExample.equation));
         if (!currentExample.cached && id !== 'Custom')
             options.push('cached=0');
-        var view = $('#viewDropdown').dropdown('get value')[0];
+        var view = $('#viewDropdown').dropdown('get value');
         if (view !== 'Default')
             options.push('view=' + view);
         if ($('#autorotateCheckbox').checkbox('is checked'))
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         var view = options.view || 'Default';
-        if (view !== $('#viewDropdown').dropdown('get value')[0])
+        if (view !== $('#viewDropdown').dropdown('get value'))
             $('#viewDropdown').dropdown('set value', view);
         var clip = options.clip === '1';
         if (clip !== $('#clippingCheckbox').checkbox('is checked'))
