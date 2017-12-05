@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (example.cached) {
             canvas.complexCurves =
                 ComplexCurves.fromFile(canvas,
-                    'http://complexcurves.org/models/' + example.id + '.bin',
+                    '/models/' + example.id + '.bin',
                     example.equation, lat, lon);
         } else {
             canvas.complexCurves = ComplexCurves.fromPolynomial(canvas,
