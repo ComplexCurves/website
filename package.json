@@ -10,6 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "complexcurves": "git+https://github.com/ComplexCurves/ComplexCurves.git#5c1881b",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "vue": "^2.4.4"
