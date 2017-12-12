@@ -15,6 +15,7 @@
 		<template v-if="matchingExamples.length > 0">
 			<div v-for="example in matchingExamples">
 				<img :src="example.image" :title="example.title" />
+        <p v-if="example.id === 'Custom'">{{ example.equation }}</p>
 				<p>{{ example.title }}</p>
 			</div>
 		</template>
@@ -65,8 +66,7 @@ export default {
 					"id": "Custom",
 					"cached": false,
 					"equation": equation,
-					"title": equation,
-					"description": "Custom equation",
+					"title": "Custom equation",
 					"polynomial": p,
 					"sheets": PolynomialParser.sheets(p)
 			};
