@@ -3,7 +3,8 @@ const del = require('del');
 
 const thirdPartyLibs = [
   'jquery',
-  'semantic-ui-css'
+  'semantic-ui-css',
+  'vue'
 ];
 const libPath = 'lib/';
 const nodeModulesPath = 'node_modules/';
