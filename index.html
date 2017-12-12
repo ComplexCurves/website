@@ -1,45 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8" />
-<title>Complex Curves</title>
-<link rel="shortcut icon" href="favicon.ico" />
-<script type="text/javascript" src="lib/ComplexCurves/ComplexCurves.js"></script>
-<script type="text/javascript" src="lib/vue/dist/vue.js"></script>
-<script type="text/javascript" src="main.js"></script>
-</head>
-<body class="basic minimal">
-<a href="https://github.com/ComplexCurves/ComplexCurves">
-    <img style="position: absolute; top: 0; right: 0; border: 0;"
-    src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
-    alt="Fork me on GitHub">
-</a>
-<div id="complexcurves">
-  <h1>Complex Curves</h1>
-  <!-- TODO search component (large/small) -->
-  <form>
-    <h2>Visualize complex plane algebraic curves</h2>
-    <input v-model="nameOrEquation" placeholder="Name or equation of curve" />
-    <p>for example
-      <a href="#Folium">Folium</a>
-      or
-      <a href="#Custom?equation=y%5E3-3*x*y%2Bx%5E3">y^3 - 3 * x * y + x^3</a>
-    </p>
-  </form>
-  <!-- TODO search results -->
-  <template v-if="matchingExamples.length > 0">
-    <div v-for="example in matchingExamples">
-      <img :src="example.image" :title="example.title" />
-      <p>{{ example.title }}</p>
-    </div>
-  </template>
-  <template v-else>
-    <div>
-      <h2>No results</h2>
-      <p>Your search returned no results</p>
-    </div>
-  </template>
-  <!-- TODO viewer component -->
-</div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+		<title>Complex Curves</title>
+		<link rel="shortcut icon" href="favicon.ico" />
+		<script type="text/javascript" src="lib/ComplexCurves/ComplexCurves.js">
+		</script>
+  </head>
+  <body>
+		<a href="https://github.com/ComplexCurves/ComplexCurves">
+			<img style="position: absolute; top: 0; right: 0; border: 0;"
+			src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+			alt="Fork me on GitHub">
+		</a>
+    <div id="app"></div>
+    <script src="/dist/build.js"></script>
+  </body>
 </html>
