@@ -64,16 +64,38 @@ export default {
 			transparency: false
     };
   },
+	computed: {
+		canvas: function () {
+			return document.querySelector("#viewer canvas");
+		}
+	},
 	methods: {
 		exportDomainColouring: function () {
 			this.complexCurves.exportDomainColouring();
 		},
 		exportScreenshot: function () {
 			this.complexCurves.exportScreenshot();
+		},
+		resetOptions: function () {
+			this.view = "Default";
+			this.autorotate = false;
+			this.clip = false;
+			this.ortho = false;
+			this.transparency = false;
+		},
+		teardownComplexCurves: function () {
+			this.resetOptions();
+			this.complexCurves.unregisterEventHandlers();
 		}
 	},
 	props: {
-    example: null
+    example: {
+			type: Object,
+			required: true,
+			validator: function (example) {
+				return !example || example.sheets >= 2;
+			}
+		}
 	},
   watch: {
 		autorotate: function (autorotate) {
@@ -83,37 +105,18 @@ export default {
 			this.complexCurves.setClipping(clip);
 		},
 		example: function (example) {
-			var canvas = document.querySelector("#viewer canvas");
-			if (canvas === null)
-				return;
-			if (!example || example.sheets < 2) // TODO does not belong here
-					return;
-			if (this.complexCurves) {
-					this.complexCurves.unregisterEventHandlers();
-					var parentNode = canvas.parentNode;
-					var newCanvas = document.createElement("canvas");
-					newCanvas.width = 800;
-					newCanvas.height = 800;
-					parentNode.replaceChild(newCanvas, canvas);
-					canvas = newCanvas;
-			}
-			var piOver180 = Math.PI / 180;
-			var lat = 75 * piOver180;
-			var lon = 30 * piOver180;
+			if (this.complexCurves)
+				this.teardownComplexCurves();
 			if (example.cached) {
+					var path = '/models/' + example.id + '.bin';
 					this.complexCurves =
-							ComplexCurves.fromFile(canvas,
-									'/models/' + example.id + '.bin',
-									example.equation, lat, lon);
+							ComplexCurves.fromFile(this.canvas, path, example.equation);
 			} else {
-					this.complexCurves = ComplexCurves.fromPolynomial(canvas,
-							example.polynomial, example.depth || 12, lat, lon);
+					this.complexCurves = ComplexCurves.fromPolynomial(this.canvas,
+							example.polynomial, example.depth || 12);
 			}
 			if (example.zoom !== undefined)
 					this.complexCurves.setZoom(example.zoom);
-			// TODO search should be small
-			// TODO reset options
-			// TODO update hash
 		},
 		ortho: function (ortho) {
 			this.complexCurves.setOrtho(ortho);
@@ -129,7 +132,4 @@ export default {
 </script>
 
 <style>
-canvas {
-	background-color: black;
-}
 </style>

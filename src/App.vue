@@ -19,6 +19,8 @@ export default {
   methods: {
 		selectExample: function(newExample) {
 			this.example = newExample;
+			// TODO search should be small
+			// TODO update hash
 		}
   },
   components: {
