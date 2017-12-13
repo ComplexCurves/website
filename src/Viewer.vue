@@ -76,6 +76,13 @@ export default {
 		exportScreenshot: function () {
 			this.complexCurves.exportScreenshot();
 		},
+		resetCanvas: function () {
+			var parentNode = this.canvas.parentNode;
+			var newCanvas = document.createElement("canvas");
+			newCanvas.width = 800;
+			newCanvas.height = 800;
+			parentNode.replaceChild(newCanvas, canvas);
+		},
 		resetOptions: function () {
 			this.view = "Default";
 			this.autorotate = false;
@@ -86,14 +93,15 @@ export default {
 		teardownComplexCurves: function () {
 			this.resetOptions();
 			this.complexCurves.unregisterEventHandlers();
+			this.resetCanvas();
 		}
 	},
 	props: {
     example: {
 			type: Object,
-			required: true,
 			validator: function (example) {
-				return !example || example.sheets >= 2;
+				console.log(example, example.sheets);
+				return !(example !== null && example.sheets < 2);
 			}
 		}
 	},
