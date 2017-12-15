@@ -19,7 +19,6 @@ export default {
   methods: {
 		selectExample: function(newExample) {
 			this.example = newExample;
-			// TODO search should be small
 			// TODO update hash
 		}
   },
@@ -37,6 +36,10 @@ export default {
 	}
 }
 
+body {
+  min-width: 310px;
+}
+
 #app {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -50,6 +53,10 @@ export default {
 h1 > img {
   height: 3rem;
   vertical-align: middle;
+}
+
+h1 {
+  white-space: nowrap;
 }
 
 h1, h2 {

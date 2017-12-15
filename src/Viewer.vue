@@ -171,4 +171,7 @@ canvas {
 #controls select, #controls button {
   min-width: 8em;
 }
+#controls input {
+  vertical-align: middle;
+}
 </style>
