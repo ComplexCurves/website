@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<h1>Complex Curves</h1>
+    <h1>Complex Curves</h1>
     <Search @example="selectExample"/>
 		<Viewer :example="example" />
 	</div>
@@ -31,13 +31,20 @@ export default {
 </script>
 
 <style>
+@media (max-width: 715px) {
+	body > a {
+		display: none;
+	}
+}
+
 #app {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+	margin: 0 auto;
+	width: 80%;
 }
 
 h1, h2 {
@@ -55,6 +62,6 @@ li {
 }
 
 a {
-  color: #42b983;
+	text-decoration: none;
 }
 </style>
