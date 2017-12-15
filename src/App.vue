@@ -1,8 +1,9 @@
 <template>
 	<div id="app">
     <h1><img src="images/Folium.png" />Complex Curves</h1>
-    <Search @example="selectExample"/>
-		<Viewer :example="example" />
+    <keep-alive>
+    <component :is="currentView" :example="example" @example="selectExample" />
+    </keep-alive>
 	</div>
 </template>
 
@@ -13,18 +14,20 @@ export default {
   name: 'app',
   data: function () {
 		return {
+      currentView: 'search',
 			example: null
 		}
 	},
   methods: {
 		selectExample: function(newExample) {
+      this.currentView = 'viewer';
 			this.example = newExample;
 			// TODO update hash
 		}
   },
   components: {
-    Search,
-		Viewer
+    search: Search,
+		viewer: Viewer
   }
 }
 </script>

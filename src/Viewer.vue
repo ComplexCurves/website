@@ -1,5 +1,5 @@
 <template>
-  <div id="viewer" v-show="example !== null">
+  <div id="viewer">
 		<canvas width="800" height="800"></canvas>
     <div id="controls">
       <fieldset>
@@ -66,6 +66,21 @@ export default {
 			transparency: false
     };
   },
+  activated: function () {
+    var example = this.example;
+    if (this.complexCurves)
+      this.teardownComplexCurves();
+    if (example.cached) {
+        var path = '/models/' + example.id + '.bin';
+        this.complexCurves =
+            ComplexCurves.fromFile(this.canvas, path, example.equation);
+    } else {
+        this.complexCurves = ComplexCurves.fromPolynomial(this.canvas,
+            example.polynomial, example.depth || 12);
+    }
+    if (example.zoom !== undefined)
+        this.complexCurves.setZoom(example.zoom);
+  },
 	computed: {
 		canvas: function () {
 			return document.querySelector("#viewer canvas");
@@ -101,6 +116,7 @@ export default {
 	props: {
     example: {
 			type: Object,
+      required: true,
 			validator: function (example) {
 				console.log(example, example.sheets);
 				return !(example !== null && example.sheets < 2);
@@ -113,20 +129,6 @@ export default {
 		},
 		clip: function (clip) {
 			this.complexCurves.setClipping(clip);
-		},
-		example: function (example) {
-			if (this.complexCurves)
-				this.teardownComplexCurves();
-			if (example.cached) {
-					var path = '/models/' + example.id + '.bin';
-					this.complexCurves =
-							ComplexCurves.fromFile(this.canvas, path, example.equation);
-			} else {
-					this.complexCurves = ComplexCurves.fromPolynomial(this.canvas,
-							example.polynomial, example.depth || 12);
-			}
-			if (example.zoom !== undefined)
-					this.complexCurves.setZoom(example.zoom);
 		},
 		ortho: function (ortho) {
 			this.complexCurves.setOrtho(ortho);
@@ -144,7 +146,6 @@ export default {
 <style>
 canvas {
   float: left;
-  margin-top: 1em;
   width: 100%;
 }
 #controls {
@@ -161,7 +162,6 @@ canvas {
 }
 #controls fieldset {
   border: none;
-  margin-top: 1em;
   text-align: left;
   float: left;
 }
