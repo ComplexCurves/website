@@ -80,6 +80,7 @@ export default {
     }
     if (example.zoom !== undefined)
         this.complexCurves.setZoom(example.zoom);
+    this.complexCurves.setBackground(1, 1, 1, 0);
   },
 	computed: {
 		canvas: function () {
@@ -147,6 +148,7 @@ export default {
 canvas {
   float: left;
   width: 100%;
+  margin-bottom: 1.5em;
 }
 #controls {
   min-width: 10em;
