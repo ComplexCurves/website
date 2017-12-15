@@ -1,53 +1,55 @@
 <template>
   <div id="viewer" v-show="example !== null">
 		<canvas width="800" height="800"></canvas>
-		<fieldset>
-			<legend for="viewDropdown">View</legend>
-			<select id="viewDropdown" v-model="view">
-				<option>Default</option>
-				<option>Front</option>
-				<option>Back</option>
-				<option>Left</option>
-				<option>Right</option>
-				<option>Top</option>
-				<option>Bottom</option>
-			</select>
-		</fieldset>
-		<fieldset>
-			<legend>Options</legend>
-			<div>
-				<input id="autorotate" v-model="autorotate" type="checkbox">
-				<label for="autorotate">autorotation</label>
-			</div>
-			<div>
-				<input id="clip" v-model="clip" type="checkbox">
-				<label for="clip">clipping</label>
-			</div>
-			<div>
-				<input id="ortho" v-model="ortho" type="checkbox">
-				<label for="ortho">orthogonal</label>
-			</div>
-			<div>
-				<input id="transparency" v-model="transparency" type="checkbox">
-				<label for="transparency">transparency</label>
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend>Downloads</legend>
-			<div style="display: none">
-					<button id="surfaceButton">3D model</button>
-			</div>
-			<div>
-					<button id="screenshotButton" @click="exportScreenshot">
-						Image
-					</button>
-			</div>
-			<div>
-					<button id="domainColouringButton" @click="exportDomainColouring">
-						Sheets
-					</button>
-			</div>
-		</fieldset>
+    <div id="controls">
+      <fieldset>
+        <legend for="viewDropdown">View</legend>
+        <select id="viewDropdown" v-model="view">
+          <option>Default</option>
+          <option>Front</option>
+          <option>Back</option>
+          <option>Left</option>
+          <option>Right</option>
+          <option>Top</option>
+          <option>Bottom</option>
+        </select>
+      </fieldset>
+      <fieldset>
+        <legend>Options</legend>
+        <div>
+          <input id="autorotate" v-model="autorotate" type="checkbox">
+          <label for="autorotate">autorotation</label>
+        </div>
+        <div>
+          <input id="clip" v-model="clip" type="checkbox">
+          <label for="clip">clipping</label>
+        </div>
+        <div>
+          <input id="ortho" v-model="ortho" type="checkbox">
+          <label for="ortho">orthogonal</label>
+        </div>
+        <div>
+          <input id="transparency" v-model="transparency" type="checkbox">
+          <label for="transparency">transparency</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Downloads</legend>
+        <div style="display: none">
+            <button id="surfaceButton">3D model</button>
+        </div>
+        <div>
+            <button id="screenshotButton" @click="exportScreenshot">
+              Image
+            </button>
+        </div>
+        <div>
+            <button id="domainColouringButton" @click="exportDomainColouring">
+              Sheets
+            </button>
+        </div>
+      </fieldset>
+    </div>
 	</div>
 </template>
 
@@ -141,7 +143,32 @@ export default {
 
 <style>
 canvas {
-	width: 100%;
-	height: 100%;
+  float: left;
+  margin-top: 1em;
+  width: 100%;
+}
+#controls {
+  min-width: 10em;
+}
+@media (min-width: 715px) {
+  canvas {
+    width: 70%;
+  }
+	#controls {
+    float: left;
+    width: 30%;
+	}
+}
+#controls fieldset {
+  border: none;
+  margin-top: 1em;
+  text-align: left;
+  float: left;
+}
+#controls legend {
+  font-weight: bold;
+}
+#controls select, #controls button {
+  min-width: 8em;
 }
 </style>
