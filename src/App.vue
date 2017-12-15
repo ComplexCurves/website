@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-    <h1>Complex Curves</h1>
+    <h1><img src="images/Folium.png" />Complex Curves</h1>
     <Search @example="selectExample"/>
 		<Viewer :example="example" />
 	</div>
@@ -45,6 +45,11 @@ export default {
   color: #2c3e50;
 	margin: 0 auto;
 	width: 80%;
+}
+
+h1 > img {
+  height: 3rem;
+  vertical-align: middle;
 }
 
 h1, h2 {
