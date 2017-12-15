@@ -13,11 +13,13 @@
 		<!-- TODO search results component? -->
     <template>
       <template v-if="matchingExamples.length > 0">
-        <div class="example" v-for="example in matchingExamples">
-          <img :src="example.image" :title="example.title" />
-          <p v-if="example.id === 'Custom'">{{ example.equation }}</p>
-          <p>{{ example.title }}</p>
-        </div>
+        <a :href="'#' + example.id" v-for="example in matchingExamples">
+          <div class="example">
+            <img :src="example.image" :title="example.title" />
+            <p v-if="example.id === 'Custom'">{{ example.equation }}</p>
+            <p>{{ example.title }}</p>
+          </div>
+        </a>
       </template>
       <template v-else>
         <h3>No results</h3>
@@ -94,6 +96,11 @@ export default {
 <style>
 div.example {
   margin: 5em 0;
+}
+
+.example img {
+  width: 80%;
+  max-width: 250px;
 }
 
 h3 {
