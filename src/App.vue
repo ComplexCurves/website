@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-    <h1><img src="images/Folium.png" />Complex Curves</h1>
+    <h1><img src="images/Folium.png" /> Complex Curves</h1>
     <keep-alive>
     <component :is="currentView" :example="example" @example="selectExample" />
     </keep-alive>

@@ -13,7 +13,7 @@
 		<!-- TODO search results component? -->
     <template>
       <template v-if="matchingExamples.length > 0">
-        <div v-for="example in matchingExamples">
+        <div class="example" v-for="example in matchingExamples">
           <img :src="example.image" :title="example.title" />
           <p v-if="example.id === 'Custom'">{{ example.equation }}</p>
           <p>{{ example.title }}</p>
@@ -92,6 +92,10 @@ export default {
 </script>
 
 <style>
+div.example {
+  margin: 5em 0;
+}
+
 h3 {
   margin: 2em 0 0.25em 0;
 }
