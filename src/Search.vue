@@ -1,28 +1,29 @@
 <template>
   <div id="search">
-		<!-- TODO search component (large/small) -->
+		<template>
 			<h2>Visualize complex plane algebraic curves</h2>
 			<input v-model="nameOrEquation" placeholder="Name or equation of curve"
 				@keydown.enter="selectExample()" />
-			<p>for example
+			<p>e.g.
 				<a href="#Folium">Folium</a>
 				or
 				<a href="#Custom?equation=y%5E3-3*x*y%2Bx%5E3">y^3 - 3 * x * y + x^3</a>
 			</p>
-		<!-- TODO search results -->
-		<template v-if="matchingExamples.length > 0">
-			<div v-for="example in matchingExamples">
-				<img :src="example.image" :title="example.title" />
-        <p v-if="example.id === 'Custom'">{{ example.equation }}</p>
-				<p>{{ example.title }}</p>
-			</div>
 		</template>
-		<template v-else>
-			<div>
-				<h2>No results</h2>
-				<p>Your search returned no results</p>
-			</div>
-		</template>
+		<!-- TODO search results component? -->
+    <template>
+      <template v-if="matchingExamples.length > 0">
+        <div v-for="example in matchingExamples">
+          <img :src="example.image" :title="example.title" />
+          <p v-if="example.id === 'Custom'">{{ example.equation }}</p>
+          <p>{{ example.title }}</p>
+        </div>
+      </template>
+      <template v-else>
+        <h3>No results</h3>
+        <span>Your search returned no results</span>
+      </template>
+    </template>
 	</div>
 </template>
 
@@ -91,4 +92,14 @@ export default {
 </script>
 
 <style>
+h3 {
+  margin: 2em 0 0.25em 0;
+}
+
+input {
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-radius: 2px;
+  line-height: 1.2em;
+  padding: 0.67em 1em;
+}
 </style>
