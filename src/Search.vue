@@ -30,12 +30,13 @@
 </template>
 
 <script>
+import examples from '../examples.json'
 export default {
   name: 'search',
 	data: function () {
     return {
       nameOrEquation: '',
-      examples: []
+      examples
     };
 	},
 	computed: {
@@ -71,24 +72,10 @@ export default {
 					"sheets": PolynomialParser.sheets(p)
 			};
 		},
-		fetchExamples: function() {
-			var vm = this;
-			fetch('/examples.json').then(function(response) {
-				return response.json();
-			}).then(function(json) {
-				vm.examples = json;
-			})
-			.catch(function (error) {
-				console.error(error);
-			});
-		},
 		selectExample: function() {
 			var example = this.matchingExamples[0];
 			this.$emit('example', example);
 		}
-	},
-	mounted: function() {
-		this.fetchExamples();
 	}
 }
 </script>
