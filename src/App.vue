@@ -1,34 +1,71 @@
 <template>
 	<div id="app">
-    <h1><img src="images/Folium.png" /> Complex Curves</h1>
+    <router-link to="/">
+      <h1><img src="images/Folium.png" /> Complex Curves</h1>
+    </router-link>
     <keep-alive>
-    <component :is="currentView" :example="example" @example="selectExample" />
+    <router-view />
     </keep-alive>
 	</div>
 </template>
 
 <script>
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Search from './Search.vue'
 import Viewer from './Viewer.vue'
+import examples from '../examples.json'
+
+Vue.use(VueRouter);
+
+function customExample(equation) {
+  var p = PolynomialParser.eval(PolynomialParser.parse(equation));
+  if(p === null)
+    throw "ParseError: invalid equation";
+  return {
+      "id": "Custom",
+      "cached": false,
+      "equation": equation,
+      "title": "Custom equation",
+      "polynomial": p,
+      "sheets": PolynomialParser.sheets(p)
+  };
+}
+
+const router = new VueRouter({
+  routes: [
+    { path: '/', component: Search },
+    { path: '/:id', component: Viewer, props: function (route) {
+        var id = route.params.id;
+        var example;
+        if (id === 'Custom') {
+          var equation = route.query.equation;
+          try {
+            example = customExample(equation);
+          }
+          catch (error) {
+            // no matching examples and not a valid equation
+          }
+        } else {
+          example = examples.find(function (example) {
+            return example.id === id;
+          });
+        }
+        return {
+          example: example
+        };
+      }
+    }
+  ]
+});
+
 export default {
   name: 'app',
-  data: function () {
-		return {
-      currentView: 'search',
-			example: null
-		}
-	},
-  methods: {
-		selectExample: function(newExample) {
-      this.currentView = 'viewer';
-			this.example = newExample;
-			// TODO update hash
-		}
-  },
   components: {
     search: Search,
 		viewer: Viewer
-  }
+  },
+  router: router
 }
 </script>
 
@@ -60,6 +97,7 @@ h1 > img {
 
 h1 {
   white-space: nowrap;
+  color: black;
 }
 
 h1, h2 {

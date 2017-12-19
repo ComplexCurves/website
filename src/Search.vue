@@ -5,21 +5,26 @@
 			<input v-model="nameOrEquation" placeholder="Name or equation of curve"
 				@keydown.enter="selectExample()" />
 			<p>e.g.
-				<a href="#Folium">Folium</a>
+				<router-link to="/Folium">Folium</router-link>
 				or
-				<a href="#Custom?equation=y%5E3-3*x*y%2Bx%5E3">y^3 - 3 * x * y + x^3</a>
+				<router-link to="/Custom?equation=y%5E3-3*x*y%2Bx%5E3">y^3 - 3 * x * y + x^3</router-link>
 			</p>
 		</template>
 		<!-- TODO search results component? -->
     <template>
       <template v-if="matchingExamples.length > 0">
-        <a :href="'#' + example.id" v-for="example in matchingExamples">
+        <router-link :to="exampleURL(example)" v-for="example in matchingExamples" :key="example.id">
           <div class="example">
-            <img :src="example.image" :title="example.title" />
-            <p v-if="example.id === 'Custom'">{{ example.equation }}</p>
-            <p>{{ example.title }}</p>
+            <template v-if="example.id === 'Custom'">
+              <p>{{ example.equation }}</p>
+              <p>{{ example.title }}</p>
+            </template>
+            <template v-else>
+              <img :src="example.image" :title="example.title" />
+              <p>{{ example.title }}</p>
+            </template>
           </div>
-        </a>
+        </router-link>
       </template>
       <template v-else>
         <h3>No results</h3>
@@ -35,15 +40,14 @@ export default {
   name: 'search',
 	data: function () {
     return {
-      nameOrEquation: '',
-      examples
+      nameOrEquation: ''
     };
 	},
 	computed: {
 		matchingExamples: function() {
 			var vm = this;
 			var nameOrEquation = vm.nameOrEquation.toLowerCase();
-			var matchingExamples = this.examples.filter(function(example) {
+			var matchingExamples = examples.filter(function(example) {
 				var exampleTitle = example.title.toLowerCase();
 				return exampleTitle.includes(nameOrEquation);
 			});
@@ -72,10 +76,16 @@ export default {
 					"sheets": PolynomialParser.sheets(p)
 			};
 		},
-		selectExample: function() {
-			var example = this.matchingExamples[0];
-			this.$emit('example', example);
-		}
+    exampleURL: function (example) {
+      var url = '/' + example.id;
+      if (example.id === 'Custom')
+        url += '?equation=' + encodeURIComponent(example.equation);
+      return url;
+    },
+    selectExample: function() {
+      var example = this.matchingExamples[0];
+      this.$emit('example', example);
+    }
 	}
 }
 </script>

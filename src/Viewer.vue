@@ -58,7 +58,7 @@ export default {
   name: 'viewer',
   data: function () {
     return {
-			complexCurves: null,
+      complexCurves: null,
 			view: "Default",
 			autorotate: false,
 			clip: false,
@@ -67,25 +67,12 @@ export default {
     };
   },
   activated: function () {
-    var example = this.example;
-    if (this.complexCurves)
-      this.teardownComplexCurves();
-    if (example.cached) {
-        var path = '/models/' + example.id + '.bin';
-        this.complexCurves =
-            ComplexCurves.fromFile(this.canvas, path, example.equation);
-    } else {
-        this.complexCurves = ComplexCurves.fromPolynomial(this.canvas,
-            example.polynomial, example.depth || 12);
-    }
-    if (example.zoom !== undefined)
-        this.complexCurves.setZoom(example.zoom);
-    this.complexCurves.setBackground(1, 1, 1, 0);
+    this.updateComplexCurves();
   },
 	computed: {
 		canvas: function () {
 			return document.querySelector("#viewer canvas");
-		}
+		},
 	},
 	methods: {
 		exportDomainColouring: function () {
@@ -93,13 +80,6 @@ export default {
 		},
 		exportScreenshot: function () {
 			this.complexCurves.exportScreenshot();
-		},
-		resetCanvas: function () {
-			var parentNode = this.canvas.parentNode;
-			var newCanvas = document.createElement("canvas");
-			newCanvas.width = 800;
-			newCanvas.height = 800;
-			parentNode.replaceChild(newCanvas, canvas);
 		},
 		resetOptions: function () {
 			this.view = "Default";
@@ -111,15 +91,29 @@ export default {
 		teardownComplexCurves: function () {
 			this.resetOptions();
 			this.complexCurves.unregisterEventHandlers();
-			this.resetCanvas();
-		}
+		},
+    updateComplexCurves: function () {
+      var example = this.example;
+      if (this.complexCurves)
+        this.teardownComplexCurves();
+      if (example.cached) {
+          var path = '/models/' + example.id + '.bin';
+          this.complexCurves =
+              ComplexCurves.fromFile(this.canvas, path, example.equation);
+      } else {
+          this.complexCurves = ComplexCurves.fromPolynomial(this.canvas,
+              example.polynomial, example.depth || 12);
+      }
+      if (example.zoom !== undefined)
+          this.complexCurves.setZoom(example.zoom);
+      this.complexCurves.setBackground(1, 1, 1, 0);
+    }
 	},
 	props: {
     example: {
 			type: Object,
       required: true,
 			validator: function (example) {
-				console.log(example, example.sheets);
 				return !(example !== null && example.sheets < 2);
 			}
 		}
@@ -138,7 +132,7 @@ export default {
 			this.complexCurves.setTransparency(transparency);
 		},
 		view: function (view) {
-        this.complexCurves['rotate' + view]();
+      this.complexCurves['rotate' + view]();
 		}
 	}
 }
