@@ -53,7 +53,8 @@ export default {
     exampleURL: Example.toURL,
     selectExample: function() {
       var example = this.searchResults[0];
-      this.$emit('example', example);
+      var url = Example.toURL(example);
+      this.$router.push(url);
     }
 	}
 }
