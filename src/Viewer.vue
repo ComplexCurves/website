@@ -67,7 +67,7 @@ export default {
 			transparency: this.initialTransparency || false
     };
   },
-  activated: function () {
+  mounted: function () {
     this.updateComplexCurves();
   },
 	computed: {

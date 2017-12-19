@@ -3,9 +3,7 @@
     <router-link to="/">
       <h1><img src="images/Folium.png" /> Complex Curves</h1>
     </router-link>
-    <keep-alive>
     <router-view />
-    </keep-alive>
 	</div>
 </template>
 
