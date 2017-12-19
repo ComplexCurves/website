@@ -96,7 +96,7 @@ export default {
       }
       if (example.zoom !== undefined)
           this.complexCurves.setZoom(example.zoom);
-      this.complexCurves.setBackground(1, 1, 1, 0); // TODO fix transparency
+      this.complexCurves.setBackground(0, 0, 0, 1);
 			this.complexCurves.setAutorotate(this.autorotate);
 			this.complexCurves.setClipping(this.clip);
 			this.complexCurves.setOrtho(this.ortho);
