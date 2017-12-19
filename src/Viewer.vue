@@ -54,16 +54,17 @@
 </template>
 
 <script>
+import Example from './Example.js'
 export default {
   name: 'viewer',
   data: function () {
     return {
       complexCurves: null,
-			view: "Default",
-			autorotate: false,
-			clip: false,
-			ortho: false,
-			transparency: false
+			view: this.initialView || "Default",
+			autorotate: this.initialAutorotate || false,
+			clip: this.initialClip || false,
+			ortho: this.initialOrtho || false,
+			transparency: this.initialTransparency || false
     };
   },
   activated: function () {
@@ -81,21 +82,10 @@ export default {
 		exportScreenshot: function () {
 			this.complexCurves.exportScreenshot();
 		},
-		resetOptions: function () {
-			this.view = "Default";
-			this.autorotate = false;
-			this.clip = false;
-			this.ortho = false;
-			this.transparency = false;
-		},
-		teardownComplexCurves: function () {
-			this.resetOptions();
-			this.complexCurves.unregisterEventHandlers();
-		},
     updateComplexCurves: function () {
       var example = this.example;
       if (this.complexCurves)
-        this.teardownComplexCurves();
+        this.complexCurves.unregisterEventHandlers();
       if (example.cached) {
           var path = '/models/' + example.id + '.bin';
           this.complexCurves =
@@ -106,7 +96,34 @@ export default {
       }
       if (example.zoom !== undefined)
           this.complexCurves.setZoom(example.zoom);
-      this.complexCurves.setBackground(1, 1, 1, 0);
+      this.complexCurves.setBackground(1, 1, 1, 0); // TODO fix transparency
+			this.complexCurves.setAutorotate(this.autorotate);
+			this.complexCurves.setClipping(this.clip);
+			this.complexCurves.setOrtho(this.ortho);
+			this.complexCurves.setTransparency(this.transparency);
+      this.complexCurves['rotate' + this.view]();
+    },
+    updateRoute: function () {
+      var example = this.example;
+      var id = encodeURIComponent(example.id);
+      var options = [];
+      if (id === 'Custom')
+          options.push('equation=' +
+              encodeURIComponent(example.equation));
+      if (!example.cached && id !== 'Custom')
+          options.push('cached=0');
+      if (this.view !== 'Default')
+          options.push('view=' + this.view);
+      if (this.autorotate)
+          options.push('autorotate=1');
+      if (this.clip)
+          options.push('clip=1');
+      if (this.ortho)
+          options.push('ortho=1');
+      if (this.transparency)
+          options.push('transparency=1');
+      var hash = '/' + id + (options.length === 0 ? '' : '?' + options.join('&'));
+      this.$router.push(hash);
     }
 	},
 	props: {
@@ -114,25 +131,35 @@ export default {
 			type: Object,
       required: true,
 			validator: function (example) {
-				return !(example !== null && example.sheets < 2);
+				return Example.isValid(example);
 			}
-		}
+		},
+    initialView: String,
+    initialAutorotate: Boolean,
+    initialClip: Boolean,
+    initialOrtho: Boolean,
+    initialTransparency: Boolean
 	},
   watch: {
 		autorotate: function (autorotate) {
 			this.complexCurves.setAutorotate(autorotate);
+      this.updateRoute();
 		},
 		clip: function (clip) {
 			this.complexCurves.setClipping(clip);
-		},
+      this.updateRoute();
+    },
 		ortho: function (ortho) {
 			this.complexCurves.setOrtho(ortho);
+      this.updateRoute();
 		},
 		transparency: function (transparency) {
 			this.complexCurves.setTransparency(transparency);
+      this.updateRoute();
 		},
 		view: function (view) {
       this.complexCurves['rotate' + view]();
+      this.updateRoute();
 		}
 	}
 }

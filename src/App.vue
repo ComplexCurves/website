@@ -23,9 +23,10 @@ const router = new VueRouter({
     { path: '/', component: Search },
     { path: '/:id', component: Viewer, props: function (route) {
         var id = route.params.id;
+        var query = route.query;
         var example;
         if (id === 'Custom') {
-          var equation = route.query.equation;
+          var equation = query.equation;
           try {
             example = Example.fromEquation(equation);
           }
@@ -36,7 +37,12 @@ const router = new VueRouter({
           example = Example.find(id);
         }
         return {
-          example: example
+          example: example,
+          initialView: query.view,
+          initialAutorotate: query.autorotate === '1',
+          initialClip: query.clip === '1',
+          initialOrtho: query.ortho === '1',
+          initialTransparency: query.transparency === '1'
         };
       }
     }
