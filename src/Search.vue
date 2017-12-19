@@ -12,8 +12,8 @@
 		</template>
 		<!-- TODO search results component? -->
     <template>
-      <template v-if="matchingExamples.length > 0">
-        <router-link :to="exampleURL(example)" v-for="example in matchingExamples" :key="example.id">
+      <template v-if="searchResults.length > 0">
+        <router-link :to="exampleURL(example)" v-for="example in searchResults" :key="example.id">
           <div class="example">
             <template v-if="example.id === 'Custom'">
               <p>{{ example.equation }}</p>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import examples from '../examples.json'
+import Example from './Example.js'
 export default {
   name: 'search',
 	data: function () {
@@ -44,46 +44,15 @@ export default {
     };
 	},
 	computed: {
-		matchingExamples: function() {
-			var vm = this;
-			var nameOrEquation = vm.nameOrEquation.toLowerCase();
-			var matchingExamples = examples.filter(function(example) {
-				var exampleTitle = example.title.toLowerCase();
-				return exampleTitle.includes(nameOrEquation);
-			});
-			if(matchingExamples.length === 0) {
-				try {
-					return [vm.customExample(nameOrEquation)];
-				}
-				catch (error) {
-					// no matching examples and not a valid equation
-				}
-			}
-			return matchingExamples;
-		}
+		searchResults: function() {
+			var nameOrEquation = this.nameOrEquation.toLowerCase();
+      return Example.search(nameOrEquation);
+    }
 	},
 	methods: {
-		customExample: function(equation) {
-			var p = PolynomialParser.eval(PolynomialParser.parse(equation));
-			if(p === null)
-				throw "ParseError: invalid equation";
-			return {
-					"id": "Custom",
-					"cached": false,
-					"equation": equation,
-					"title": "Custom equation",
-					"polynomial": p,
-					"sheets": PolynomialParser.sheets(p)
-			};
-		},
-    exampleURL: function (example) {
-      var url = '/' + example.id;
-      if (example.id === 'Custom')
-        url += '?equation=' + encodeURIComponent(example.equation);
-      return url;
-    },
+    exampleURL: Example.toURL,
     selectExample: function() {
-      var example = this.matchingExamples[0];
+      var example = this.searchResults[0];
       this.$emit('example', example);
     }
 	}

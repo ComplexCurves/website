@@ -14,23 +14,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Search from './Search.vue'
 import Viewer from './Viewer.vue'
-import examples from '../examples.json'
+import Example from './Example.js'
 
 Vue.use(VueRouter);
-
-function customExample(equation) {
-  var p = PolynomialParser.eval(PolynomialParser.parse(equation));
-  if(p === null)
-    throw "ParseError: invalid equation";
-  return {
-      "id": "Custom",
-      "cached": false,
-      "equation": equation,
-      "title": "Custom equation",
-      "polynomial": p,
-      "sheets": PolynomialParser.sheets(p)
-  };
-}
 
 const router = new VueRouter({
   routes: [
@@ -41,15 +27,13 @@ const router = new VueRouter({
         if (id === 'Custom') {
           var equation = route.query.equation;
           try {
-            example = customExample(equation);
+            example = Example.fromEquation(equation);
           }
           catch (error) {
             // no matching examples and not a valid equation
           }
         } else {
-          example = examples.find(function (example) {
-            return example.id === id;
-          });
+          example = Example.find(id);
         }
         return {
           example: example
