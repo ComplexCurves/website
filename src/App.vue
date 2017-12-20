@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import 'lato-font'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Search from './Search.vue'

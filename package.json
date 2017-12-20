@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "complexcurves": "git+https://github.com/ComplexCurves/ComplexCurves.git#5c1881b",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "vue": "^2.4.4"
+    "lato-font": "^3.0.0",
+    "vue": "^2.4.4",
+    "vue-router": "^3.0.1"
   },
   "browserslist": [
     "> 1%",
@@ -28,8 +28,8 @@
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
+    "url-loader": "^0.6.2",
     "vue-loader": "^13.0.5",
-    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
