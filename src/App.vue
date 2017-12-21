@@ -59,10 +59,16 @@ export default {
 </script>
 
 <style>
-@media (max-width: 715px) {
+@media (max-width: 780px) {
 	body > a {
 		display: none;
 	}
+}
+
+@media (max-width: 715px) {
+  #app {
+    max-width: 400px;
+  }
 }
 
 body {
@@ -77,6 +83,7 @@ body {
   color: #2c3e50;
 	margin: 0 auto;
 	width: 80%;
+  min-width: 280px;
 }
 
 h1 > img {

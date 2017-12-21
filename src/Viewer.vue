@@ -164,32 +164,36 @@ export default {
 
 <style>
 canvas {
-  float: left;
   width: 100%;
+  max-width: 400px;
   margin-bottom: 1.5em;
 }
 #controls {
+  width: 100%;
   min-width: 10em;
 }
 @media (min-width: 715px) {
   canvas {
+    float: left;
     width: 70%;
+    max-width: 400px;
   }
 	#controls {
+    width: unset;
     float: left;
-    width: 30%;
 	}
 }
 #controls fieldset {
   border: none;
   text-align: left;
-  float: left;
+  width: 9em;
+  margin: 0 auto;
 }
 #controls legend {
   font-weight: bold;
 }
 #controls select, #controls button {
-  min-width: 8em;
+  width: 9em;
 }
 #controls input {
   vertical-align: middle;
