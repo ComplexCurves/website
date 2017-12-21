@@ -59,20 +59,20 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+}
+
 @media (max-width: 780px) {
 	body > a {
 		display: none;
 	}
 }
 
-@media (max-width: 715px) {
+@media (max-width: 750px) {
   #app {
     max-width: 400px;
   }
-}
-
-body {
-  min-width: 310px;
 }
 
 #app {

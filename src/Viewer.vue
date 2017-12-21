@@ -164,29 +164,32 @@ export default {
 
 <style>
 canvas {
+  display: inline-block;
+  vertical-align: top;
   width: 100%;
   max-width: 400px;
   margin-bottom: 1.5em;
 }
 #controls {
-  width: 100%;
-  min-width: 10em;
+  width: 10em;
 }
-@media (min-width: 715px) {
-  canvas {
-    float: left;
-    width: 70%;
-    max-width: 400px;
+@media (min-width: 750px) {
+  #controls {
+    position: absolute;
+    display: inline-block;
+    margin-left: 0.5em;
+    vertical-align: top;
   }
-	#controls {
-    width: unset;
-    float: left;
-	}
+}
+@media (min-width: 800px) {
+  canvas {
+    max-width: 800px;
+    width: 62.5%
+  }
 }
 #controls fieldset {
   border: none;
   text-align: left;
-  width: 9em;
   margin: 0 auto;
 }
 #controls legend {
