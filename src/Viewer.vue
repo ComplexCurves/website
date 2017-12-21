@@ -35,9 +35,6 @@
       </fieldset>
       <fieldset>
         <legend>Downloads</legend>
-        <div style="display: none">
-            <button id="surfaceButton">3D model</button>
-        </div>
         <div>
             <button id="screenshotButton" @click="exportScreenshot">
               Image
