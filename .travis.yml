@@ -6,7 +6,7 @@ deploy:
   script: scripts/deploy.sh
   on:
     repo: ComplexCurves/website
-    branch: vue
+    branch: master
   skip_cleanup: true
 before_install:
 - openssl aes-256-cbc -K $encrypted_dd6f69ac9b09_key -iv $encrypted_dd6f69ac9b09_iv -in .travis/github_deploy_key.enc -out .travis/github_deploy_key -d
