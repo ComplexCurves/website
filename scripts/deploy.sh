@@ -12,12 +12,8 @@ git clone --depth 1 git@github.com:ComplexCurves/website.git deploy || exit 1
     git checkout FETCH_HEAD
     git checkout -b gh-pages
     echo "complexcurves.org" >CNAME
-    cp ../README.md ./README.md
-    cp -R ../dist ./dist
-    cp -R ../images ./images
-    cp -R ../models ./models
-    cp ../favicon.ico ./favicon.ico
-    cp ../index.html ./index.html
+    rm -rf dist images models favicon.ico index.html README.md
+    cp -R ../dist ../images ../models ../favicon.ico ../index.html ../README.md ./
     git add -A
     git config user.name "Travis CI"
     git config user.email "travis-ci@complexcurves.org"
