@@ -10,7 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "complexcurves": "git+https://github.com/ComplexCurves/ComplexCurves.git",
+    "complexcurves": "git+https://github.com/ComplexCurves/ComplexCurves.git#ec35f9785f085e189978bfed4543f7cc5014c4fb",
     "lato-font": "^3.0.0",
     "vue": "^2.4.4",
     "vue-router": "^3.0.1"
